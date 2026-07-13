@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Contact Form Validation</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            background-color: lightblue;
+        }
+
+        .form-box {
+            width: 400px;
+            margin: 30px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            margin-top: 12px;
+        }
+
+        input,
+        textarea {
+            width: 95%;
+            padding: 8px;
+            margin-top: 5px;
+        }
+
+        textarea {
+            height: 70px;
+        }
+
+        .error {
+            color: red;
+            font-size: 13px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 15px;
+            background-color: blue;
+            color: white;
+            border: none;
+        }
+
+        #success {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: lightgreen;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="form-box">
+
+        <h2>Contact Form</h2>
+
+        <form onsubmit="return handleSubmit()">
+
+            <label>Name:</label>
+
+            <input
+                type="text"
+                id="name"
+                oninput="clearError('nameError')"
+            >
+
+            <p class="error" id="nameError"></p>
+
+
+            <label>Email:</label>
+
+            <input
+                type="text"
+                id="email"
+                oninput="clearError('emailError')"
+            >
+
+            <p class="error" id="emailError"></p>
+
+
+            <label>Phone Number:</label>
+
+            <input
+                type="text"
+                id="phone"
+                oninput="clearError('phoneError')"
+            >
+
+            <p class="error" id="phoneError"></p>
+
+
+            <label>Password:</label>
+
+            <input
+                type="password"
+                id="password"
+                oninput="clearError('passwordError')"
+            >
+
+            <p class="error" id="passwordError"></p>
+
+
+            <label>Age:</label>
+
+            <input
+                type="text"
+                id="age"
+                oninput="clearError('ageError')"
+            >
+
+            <p class="error" id="ageError"></p>
+
+
+            <label>Message:</label>
+
+            <textarea
+                id="message"
+                oninput="clearError('messageError')"
+            ></textarea>
+
+            <p class="error" id="messageError"></p>
+
+
+            <button type="submit">Submit</button>
+
+        </form>
+
+
+        <div id="success"></div>
+
+    </div>
+
+
+    <script>
+
+        function handleSubmit()
+        {
+            var name = document.getElementById("name").value;
+
+            var email = document.getElementById("email").value;
+
+            var phone = document.getElementById("phone").value;
+
+            var password = document.getElementById("password").value;
+
+            var age = document.getElementById("age").value;
+
+            var message = document.getElementById("message").value;
+
+
+
+            document.getElementById("nameError").innerHTML = "";
+
+            document.getElementById("emailError").innerHTML = "";
+
+            document.getElementById("phoneError").innerHTML = "";
+
+            document.getElementById("passwordError").innerHTML = "";
+
+            document.getElementById("ageError").innerHTML = "";
+
+            document.getElementById("messageError").innerHTML = "";
+
+            document.getElementById("success").style.display = "none";
+
+
+            if (
+                name === "" ||
+                email === "" ||
+                phone === "" ||
+                password === "" ||
+                age === "" ||
+                message === ""
+            )
+            {
+                alert("Please fill the complete form");
+
+                return false;
+            }
+
+
+            var namePattern = /^[A-Za-z ]+$/;
+
+            if (name.length < 3 || !namePattern.test(name))
+            {
+                document.getElementById("nameError").innerHTML =
+                    "Name must contain only alphabets and spaces and minimum 3 characters";
+
+                return false;
+            }
+
+
+            var emailPattern =
+                /^[A-Za-z0-9._]+@[A-Za-z0-9]+\.[A-Za-z]{2,}$/;
+
+            if (!emailPattern.test(email))
+            {
+                document.getElementById("emailError").innerHTML =
+                    "Please enter a valid email address";
+
+                return false;
+            }
+
+
+            if (phone.length !== 10 || isNaN(phone))
+            {
+                document.getElementById("phoneError").innerHTML =
+                    "Phone number must be exactly 10 digits";
+
+                return false;
+            }
+
+
+            if (password.length < 8)
+            {
+                document.getElementById("passwordError").innerHTML =
+                    "Password must be minimum 8 characters";
+
+                return false;
+            }
+
+
+            if (!/[A-Z]/.test(password))
+            {
+                document.getElementById("passwordError").innerHTML =
+                    "Password must contain at least 1 uppercase letter";
+
+                return false;
+            }
+
+
+            if (!/[a-z]/.test(password))
+            {
+                document.getElementById("passwordError").innerHTML =
+                    "Password must contain at least 1 lowercase letter";
+
+                return false;
+            }
+
+
+            if (!/[0-9]/.test(password))
+            {
+                document.getElementById("passwordError").innerHTML =
+                    "Password must contain at least 1 number";
+
+                return false;
+            }
+
+
+            if (!/[!@#$%^&*]/.test(password))
+            {
+                document.getElementById("passwordError").innerHTML =
+                    "Password must contain at least 1 special character";
+
+                return false;
+            }
+
+
+            if (isNaN(age))
+            {
+                document.getElementById("ageError").innerHTML =
+                    "Age must be a number";
+
+                return false;
+            }
+
+
+            if (age < 18)
+            {
+                document.getElementById("ageError").innerHTML =
+                    "Age must be 18 years or older";
+
+                return false;
+            }
+
+
+            if (message.length < 10)
+            {
+                document.getElementById("messageError").innerHTML =
+                    "Message must contain minimum 10 characters";
+
+                return false;
+            }
+
+
+            document.getElementById("success").style.display = "block";
+
+            document.getElementById("success").innerHTML =
+                "<h3>Registration Successful!</h3>" +
+
+                "Name: " + name + "<br>" +
+
+                "Email: " + email + "<br>" +
+
+                "Phone: " + phone + "<br>" +
+
+                "Age: " + age + "<br>" +
+
+                "Message: " + message + "<br><br>" +
+
+                "Thank you for registering successfully.";
+
+
+            return false;
+        }
+
+
+
+        function clearError(errorId)
+        {
+            document.getElementById(errorId).innerHTML = "";
+        }
+
+    </script>
+
+</body>
+
+</html>
