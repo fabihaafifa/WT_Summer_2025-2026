@@ -1,0 +1,358 @@
+ <!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Fabiha Afifa Portfolio</title>
+
+    <style>
+
+        body {
+            margin: 0;
+            font-family: Arial;
+            background-color: white;
+            color: black;
+        }
+
+        nav {
+            background-color: darkblue;
+            padding: 15px;
+            text-align: center;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 12px;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        #switchBtn {
+            padding: 10px 20px;
+            margin-left: 15px;
+            background-color: white;
+            color: darkblue;
+            border: none;
+            cursor: pointer;
+        }
+
+        section {
+            padding: 50px;
+            text-align: center;
+            min-height: 250px;
+        }
+
+        #home {
+            padding-top: 80px;
+        }
+
+        h1,
+        h2 {
+            color: blue;
+        }
+
+        #greeting {
+            color: darkblue;
+            font-size: 24px;
+        }
+
+        .box {
+            width: 250px;
+            display: inline-block;
+            vertical-align: top;
+            margin: 10px;
+            padding: 20px;
+            border: 1px solid gray;
+            border-radius: 8px;
+        }
+
+        .contact-box {
+            width: 400px;
+            max-width: 90%;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid gray;
+            border-radius: 8px;
+        }
+
+        footer {
+            background-color: darkblue;
+            color: white;
+            padding: 15px;
+            text-align: center;
+        }
+
+    </style>
+
+</head>
+
+
+<body onload="ShowGreeting()">
+
+
+    <!-- Navigation Bar -->
+
+    <nav>
+
+        <a href="#home">Home</a>
+
+        <a href="#about">About</a>
+
+        <a href="#skills">Skills</a>
+
+        <a href="#projects">Projects</a>
+
+        <a href="#contact">Contact</a>
+
+        <button id="switchBtn" onclick="ToggleMode()">
+            Switch to Dark Mode
+        </button>
+
+    </nav>
+
+
+    <!-- Home Section -->
+
+    <section id="home">
+
+        <h3 id="greeting"></h3>
+
+        <h1>Hello! I am Fabiha Afifa</h1>
+
+        <p>
+            I am a CSE student at AIUB.
+        </p>
+
+        <p>
+            I am interested in programming and web development.
+        </p>
+
+    </section>
+
+
+    <!-- About Section -->
+
+    <section id="about">
+
+        <h2>About Me</h2>
+
+        <p>
+            My name is Fabiha Afifa.
+        </p>
+
+        <p>
+            I am a student of Computer Science and Engineering.
+        </p>
+
+        <p>
+            I study at American International
+            University-Bangladesh (AIUB).
+        </p>
+
+        <p>
+            I am learning HTML, CSS and JavaScript.
+        </p>
+
+        <p>
+            My goal is to become a skilled software developer
+            in the future.
+        </p>
+
+    </section>
+
+
+    <!-- Skills Section -->
+
+    <section id="skills">
+
+        <h2>My Skills</h2>
+
+        <div class="box">
+
+            <h3>HTML</h3>
+
+            <p>
+                I can create the basic structure of a website
+                using HTML.
+            </p>
+
+        </div>
+
+
+        <div class="box">
+
+            <h3>CSS</h3>
+
+            <p>
+                I can add colors, designs and layouts to a
+                website using CSS.
+            </p>
+
+        </div>
+
+
+        <div class="box">
+
+            <h3>JavaScript</h3>
+
+            <p>
+                I can create simple functions and form
+                validation using JavaScript.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- Projects Section -->
+
+    <section id="projects">
+
+        <h2>My Projects</h2>
+
+        <div class="box">
+
+            <h3>Registration Form</h3>
+
+            <p>
+                I created a simple registration form using
+                HTML and JavaScript.
+            </p>
+
+        </div>
+
+
+        <div class="box">
+
+            <h3>Contact Form Validation</h3>
+
+            <p>
+                I created a contact form with JavaScript
+                validation and DOM error messages.
+            </p>
+
+        </div>
+
+
+        <div class="box">
+
+            <h3>Portfolio Website</h3>
+
+            <p>
+                I created this portfolio website with a
+                dark and light mode switcher.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- Contact Section -->
+
+    <section id="contact">
+
+        <h2>Contact Me</h2>
+
+        <div class="contact-box">
+
+            <p>
+                <b>Name:</b> Fabiha Afifa
+            </p>
+
+            <p>
+                <b>Email:</b> fabiha@gmail.com
+            </p>
+
+            <p>
+                <b>Department:</b> CSE,AIUB
+            </p>
+
+            <p>
+                <b>Phone no:</b> 01312624241
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- Footer -->
+
+    <footer>
+
+        <p>
+            Copyright © 2026 Fabiha Afifa
+        </p>
+
+    </footer>
+
+
+    <script>
+
+
+        function ToggleMode()
+        {
+            var body = document.body;
+
+            var button =
+                document.getElementById("switchBtn");
+
+
+            if (body.style.backgroundColor === "black")
+            {
+                body.style.backgroundColor = "white";
+
+                body.style.color = "black";
+
+                button.innerHTML =
+                    "Switch to Dark Mode";
+            }
+            else
+            {
+                body.style.backgroundColor = "black";
+
+                body.style.color = "white";
+
+                button.innerHTML =
+                    "Switch to Light Mode";
+            }
+        }
+
+
+        function ShowGreeting()
+        {
+            var date = new Date();
+
+            var hour = date.getHours();
+
+            var greeting;
+
+
+            if (hour < 12)
+            {
+                greeting = "Good Morning!";
+            }
+            else if (hour < 18)
+            {
+                greeting = "Good Afternoon!";
+            }
+            else
+            {
+                greeting = "Good Evening!";
+            }
+
+
+            document.getElementById("greeting").innerHTML =
+                greeting;
+        }
+
+    </script>
+
+</body>
+
+</html>
